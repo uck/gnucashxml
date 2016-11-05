@@ -19,8 +19,8 @@
 
 import decimal
 import gzip
+import datetime
 
-from dateutil.parser import parse as parse_date
 from xml.etree import ElementTree
 
 __version__ = "1.0"
@@ -425,3 +425,7 @@ def _slots_from_tree(tree):
 def _parse_number(numstring):
     num, denum = numstring.split("/")
     return decimal.Decimal(num) / decimal.Decimal(denum)
+
+
+def parse_date(datetime_str):
+    datetime.datetime.strptime(datetime_str, '%Y-%m-%d %H:%M:%S %z')
